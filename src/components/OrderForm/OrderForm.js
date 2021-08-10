@@ -12,6 +12,12 @@ class OrderForm extends Component {
     };
   }
 
+  handleNameChange = e => {
+    e.preventDefault()
+    let value = e.target.value
+    this.setState({name: value})
+  }
+
 
   handleSubmit = e => {
     e.preventDefault();
