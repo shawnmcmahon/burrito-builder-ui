@@ -13,7 +13,7 @@ describe('Error handling', () => {
     cy.get('p').should('contain', 'Something went wrong. Please try again later.')
   })
 
-  it('Should notify the user if the app has an erro 401', () => {
+  it('Should notify the user if the app has an error 401', () => {
     cy.intercept({
       method: 'GET', 
       url: 'http://localhost:3001/api/v1/orders'
