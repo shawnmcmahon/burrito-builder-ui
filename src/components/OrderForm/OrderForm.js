@@ -20,12 +20,14 @@ class OrderForm extends Component {
 
 
   handleSubmit = e => {
-    e.preventDefault();
-    const order = <Orders 
-                      name={this.state.name}
-                      ingredients={this.state.ingredients}
-                      />
+    e.preventDefault()
+    const order = {
+      name: this.state.name, 
+      ingredients: this.state.ingredients, 
+    
+    }
     submitOrder(order)
+    this.props.updateOrders(order)
     this.clearInputs();
   }
 
