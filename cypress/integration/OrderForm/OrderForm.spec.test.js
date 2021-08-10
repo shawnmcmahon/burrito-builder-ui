@@ -25,15 +25,15 @@ describe('Order Form', () => {
   }) 
 
   it('Should have the proper button names for all ingredients and submit order', () => {
-    cy.get('button')
+    cy.get('#beans')
       .should('contain', 'beans')
-    cy.get('button')
+    cy.get('#steak')
       .should('contain', 'steak')
-    cy.get('button')
+    cy.get('#carnitas')
       .should('contain', 'carnitas')
-    cy.get('button')
+    cy.get('#sofritas')
       .should('contain', 'sofritas')
-      cy.get('button')
+      cy.get('#lettuce')
       .should('contain', 'lettuce')
     cy.get('button')
       .should('contain', 'queso fresco')
@@ -41,11 +41,11 @@ describe('Order Form', () => {
       .should('contain', 'pico de gallo')
     cy.get('button')
       .should('contain', 'hot sauce')
-      cy.get('button')
+      cy.get('#guacamole')
       .should('contain', 'guacamole')
-    cy.get('button')
+    cy.get('#jalapenos')
       .should('contain', 'jalapenos')
-    cy.get('button')
+    cy.get('#cilantro')
       .should('contain', 'cilantro')
     cy.get('button')
       .should('contain', 'sour cream')
@@ -64,7 +64,6 @@ describe('Order Form', () => {
       .should('contain', 'Mike')
       .and('contain', "cilantro")
       .and('contain', "sofritas")
-
   })
     
 
