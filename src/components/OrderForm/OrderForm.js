@@ -26,6 +26,7 @@ class OrderForm extends Component {
       this.setState({error: 'Please add a name and at least one ingredient to the order.'})
     } else {
       const order = {
+        id: Date.now(),
         name: this.state.name, 
         ingredients: this.state.ingredients, 
         
