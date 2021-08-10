@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 
 class OrderForm extends Component {
   constructor(props) {
-    super();
-    this.props = props;
+    super(props);
     this.state = {
       name: '',
       ingredients: []
