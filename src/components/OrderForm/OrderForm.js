@@ -8,7 +8,8 @@ class OrderForm extends Component {
     this.state = {
       name: '',
       ingredients: [],
-      possibleIngredients: ['beans', 'steak', 'carnitas', 'sofritas', 'lettuce', 'queso fresco', 'pico de gallo', 'hot sauce', 'guacamole', 'jalapenos', 'cilantro', 'sour cream']
+      possibleIngredients: ['beans', 'steak', 'carnitas', 'sofritas', 'lettuce', 'queso fresco', 'pico de gallo', 'hot sauce', 'guacamole', 'jalapenos', 'cilantro', 'sour cream'],
+      error: ''
     };
   }
 
@@ -21,14 +22,20 @@ class OrderForm extends Component {
 
   handleSubmit = e => {
     e.preventDefault()
-    const order = {
-      name: this.state.name, 
-      ingredients: this.state.ingredients, 
-    
+    if (!this.state.name || !this.state.ingredients) {
+      this.setState({error: 'Please add a name and at least one ingredient to the order.'})
+    } else {
+      const order = {
+        name: this.state.name, 
+        ingredients: this.state.ingredients, 
+        
+      }
+      console.log('order', order)
+      submitOrder(order)
+      this.props.updateOrders(order)
+      this.clearInputs();
+
     }
-    submitOrder(order)
-    this.props.updateOrders(order)
-    this.clearInputs();
   }
 
   clearInputs = () => {
@@ -71,6 +78,8 @@ class OrderForm extends Component {
         />
 
         {this.createIngredientButtons()}
+
+        <p>{this.state.error} </p>
 
         <p>Order: { this.state.ingredients.join(', ') || 'Nothing selected' }</p>
 
