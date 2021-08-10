@@ -18,7 +18,7 @@ const Orders = props => {
 
   return (
     <section>
-      { orderEls.length ? orderEls : <p>No orders yet!</p> }
+      { orderEls.length ? orderEls : <p>Something went wrong. Please try again later.</p> }
     </section>
   )
 }
