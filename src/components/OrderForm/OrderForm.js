@@ -13,6 +13,8 @@ class OrderForm extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
+
+
     this.clearInputs();
   }
 
@@ -23,25 +25,28 @@ class OrderForm extends Component {
   createIngredientButtons = () => {
     const ingredientButtons = this.state.possibleIngredients.map(ingredient => {
       return (
-        <button key={ingredient} name={ingredient} onClick={e => this.handleIngredientChange(e)}>
+        <button key={ingredient} id={ingredient} name={ingredient} onClick={e => this.handleIngredientChange(e)}>
           {ingredient}
         </button>
       )
     });
     return ingredientButtons;
-
   }
 
-  render() {
-    // const possibleIngredients = ['beans', 'steak', 'carnitas', 'sofritas', 'lettuce', 'queso fresco', 'pico de gallo', 'hot sauce', 'guacamole', 'jalapenos', 'cilantro', 'sour cream'];
-    // const ingredientButtons = possibleIngredients.map(ingredient => {
-    //   return (
-    //     <button key={ingredient} name={ingredient} onClick={e => this.handleIngredientChange(e)}>
-    //       {ingredient}
-    //     </button>
-    //   )
-    // });
+  handleIngredientChange = (event) => {
+    event.preventDefault()
+    let ingredient = event.target.id
+    console.log('ingredient', ingredient)
+    if (!this.state.ingredients.includes(event.target.id)) {
+      this.setState({ingredients: [ingredient, ...this.state.ingredients]})
+    } else {
+    const burritoWithoutIngredient = this.state.ingredients.filter(currentIngredient => currentIngredient !== ingredient)
+    console.log(burritoWithoutIngredient)
+    this.setState({ingredients: burritoWithoutIngredient})
+  }
+}
 
+  render() {
     return (
       <form>
         <input
