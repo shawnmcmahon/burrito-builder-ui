@@ -13,4 +13,5 @@ export const submitOrder = (data) => {
     },
     body: JSON.stringify(data)
   })
+  .then(response => checkForError(response))
 }
