@@ -16,10 +16,6 @@ describe('App', () => {
     cy.get('h1').should('contain', 'Burrito Builder')
   })
 
-  it('Should contain a input form', () => {
-    cy.get('form')
-    cy.get('input').should('have.length', 1)
-  })
 
   it('Should contain nothing selected upon load', () => {
     cy.get('p').should('contain', 'Order: Nothing selected')
