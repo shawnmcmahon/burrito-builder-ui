@@ -5,7 +5,8 @@ class OrderForm extends Component {
     super(props);
     this.state = {
       name: '',
-      ingredients: []
+      ingredients: [],
+      possibleIngredients: ['beans', 'steak', 'carnitas', 'sofritas', 'lettuce', 'queso fresco', 'pico de gallo', 'hot sauce', 'guacamole', 'jalapenos', 'cilantro', 'sour cream']
     };
   }
 
@@ -19,15 +20,27 @@ class OrderForm extends Component {
     this.setState({name: '', ingredients: []});
   }
 
-  render() {
-    const possibleIngredients = ['beans', 'steak', 'carnitas', 'sofritas', 'lettuce', 'queso fresco', 'pico de gallo', 'hot sauce', 'guacamole', 'jalapenos', 'cilantro', 'sour cream'];
-    const ingredientButtons = possibleIngredients.map(ingredient => {
+  createIngredientButtons = () => {
+    const ingredientButtons = this.state.possibleIngredients.map(ingredient => {
       return (
         <button key={ingredient} name={ingredient} onClick={e => this.handleIngredientChange(e)}>
           {ingredient}
         </button>
       )
     });
+    return ingredientButtons;
+
+  }
+
+  render() {
+    // const possibleIngredients = ['beans', 'steak', 'carnitas', 'sofritas', 'lettuce', 'queso fresco', 'pico de gallo', 'hot sauce', 'guacamole', 'jalapenos', 'cilantro', 'sour cream'];
+    // const ingredientButtons = possibleIngredients.map(ingredient => {
+    //   return (
+    //     <button key={ingredient} name={ingredient} onClick={e => this.handleIngredientChange(e)}>
+    //       {ingredient}
+    //     </button>
+    //   )
+    // });
 
     return (
       <form>
@@ -39,7 +52,7 @@ class OrderForm extends Component {
           onChange={e => this.handleNameChange(e)}
         />
 
-        { ingredientButtons }
+        {this.createIngredientButtons()}
 
         <p>Order: { this.state.ingredients.join(', ') || 'Nothing selected' }</p>
 
